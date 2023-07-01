@@ -22,8 +22,9 @@ function Signup() {
   }
 
   return ( 
-    <div className="signup-login container">
-    <h1>Workout Tracker</h1>
+    <div className="signup-login-container">
+    <h1 className="app-title">Workout Tracker</h1>
+    <div className="input-button-container">
       <input 
       type="email" 
       placeholder="email" 
@@ -38,13 +39,17 @@ function Signup() {
         setPassword(e.target.value)
       }}
       />
-      <button onClick={()=>{
+      <button
+      className="signup-login-btn"
+       onClick={()=>{
         signup();
       }}>
         Signup</button>
+        </div>
       <p>
         If you have an account {" "}
         <a
+        className="signup-login-anchor"
           onClick={() => {
             toLogin();
           }}

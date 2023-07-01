@@ -23,3 +23,38 @@ body {
     font-size: 1.5rem;
     margin-bottom: 1.25rem;
   }
+
+  .input-button-container{
+    display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  }
+
+  .signup-login-btn {
+    padding: 0.5625rem 0.9375rem;
+    border-radius: 0.3125rem;
+    background-color: #698f7fec;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+  
+  .signup-login-btn:hover {
+    background-color: #16622c;
+  }
+
+  .signup-login-anchor{
+    text-decoration: underline;
+  }
+
+  .signup-login-anchor:hover{
+    cursor: pointer;
+    background-color: #698f7fec;
+    color:#fff;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 0.3125rem;
+  }
