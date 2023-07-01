@@ -13,13 +13,6 @@ function Profile() {
     email: "",
   });
 
-  function getMyWorkouts(userId) {
-    axios.get("http://localhost:3636/todo/" + userId).then(({ data }) => {
-      setWorkouts(data);
-      setUpdatedWorkouts(new Array(data.length).fill(""));
-    });
-  }
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
@@ -39,9 +32,16 @@ function Profile() {
     }
   }, []);
 
+  function getMyWorkouts(userId) {
+    axios.get("http://localhost:3636/workout/" + userId).then(({ data }) => {
+      setWorkouts(data);
+      setUpdatedWorkouts(new Array(data.length).fill(""));
+    });
+  }
+
   function addWorkout() {
     axios
-      .post("http://localhost:3636/todo/", {
+      .post("http://localhost:3636/workout/", {
         title: workout,
         userId: user._id,
       })
@@ -53,7 +53,7 @@ function Profile() {
 
   function deleteWorkout(workoutId) {
     axios
-      .delete(`http://localhost:3636/todo/${workoutId}`)
+      .delete(`http://localhost:3636/workout/${workoutId}`)
       .then(() => {
         getMyWorkouts(user._id);
       })
@@ -62,10 +62,27 @@ function Profile() {
       });
   }
 
+  function resetWorkouts(userId)  {
+    axios
+    .delete("http://localhost:3636/workout/user/" + userId)
+    .then(() => {
+      // Handle the successful response from the server
+      console.log("Workouts reset successfully");
+      // Perform any additional actions if needed
+    })
+    .catch((error) => {
+      // Handle any errors that occurred during the request
+      console.error("Error resetting workouts:", error);
+    });
+  setWorkouts([]);
+  setUpdatedWorkouts([]);
+};
+
+
   function updateWorkout(workoutId, index) {
     const updatedTitle = updatedWorkouts[index];
     axios
-      .put(`http://localhost:3636/todo/${workoutId}`, { title: updatedTitle })
+      .put(`http://localhost:3636/workout/${workoutId}`, { title: updatedTitle })
       .then(() => {
         const updatedArray = [...updatedWorkouts];
         updatedArray[index] = "";
@@ -107,6 +124,7 @@ function Profile() {
             setWorkout(e.target.value);
           }}
         />
+
         <button
           className="add-btn"
           onClick={() => {
@@ -115,12 +133,17 @@ function Profile() {
         >
           Add Workout
         </button>
+
+        <button className="reset-btn" onClick={resetWorkouts}>
+    Reset Workouts
+  </button>
+
       </div>
 
       <ul className="workout-list">
         {workouts.map((e, index) => (
           <li className="workout-item" key={e._id}>
-            
+
             <span className="workout-title">{e.title}</span>
 
             <input

@@ -48,7 +48,8 @@
   margin-right: 0.625rem;
 }
 
-.add-btn {
+.add-btn,
+.reset-btn {
   padding: 0.5625rem 0.9375rem;
   border-radius: 0.3125rem;
   color: #fff;
