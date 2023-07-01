@@ -56,33 +56,39 @@ function Profile() {
   }
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          disconnect();
-        }}
-      >
-        Disconnect
-      </button>
+    <div className="profile-container">      
       <h1>Profile of {user.email}</h1>
-      <input
+      <div className="profile-input-button-container">
+      <input 
         type="text"
-        placeholder="workout"
+        placeholder="Add workouts"
         value={workout}
+        className='input-workout'
         onChange={(e) => {
           setWorkout(e.target.value);
         }}
       />
-      <button
+      <button 
+      className="profile-btn create-btn"
         onClick={() => {
           createWorkout();
         }}
       >
         Add Workout
       </button>
-      <ul>
+      <button
+      className="profile-btn disconnect-btn"
+        onClick={() => {
+          disconnect();
+        }}
+      >
+        Disconnect
+      </button>
+      </div>
+
+      <ul className="workout-list">
         {workouts.map((e) => (
-          <li>{e.title}</li>
+          <li className="todo-item">{e.title}</li>
         ))}
       </ul>
     </div>
