@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -56,39 +55,43 @@ function Profile() {
   }
 
   return (
-    <div className="profile-container">      
-      <h1>Profile of {user.email}</h1>
+    <div className="profile-container">
+      <h1 className="profile-name">Profile of {user.email}</h1>
+      <p className="description-text">
+        Do you want to set a workout routine to stay fit? Add your favorite
+        exercises or workouts below to create a program that fits your needs!
+      </p>
       <div className="profile-input-button-container">
-      <input 
-        type="text"
-        placeholder="Add workouts"
-        value={workout}
-        className='input-workout'
-        onChange={(e) => {
-          setWorkout(e.target.value);
-        }}
-      />
-      <button 
-      className="profile-btn create-btn"
-        onClick={() => {
-          createWorkout();
-        }}
-      >
-        Add Workout
-      </button>
-      <button
-      className="profile-btn disconnect-btn"
-        onClick={() => {
-          disconnect();
-        }}
-      >
-        Disconnect
-      </button>
+        <input
+          type="text"
+          placeholder="Add workouts"
+          value={workout}
+          className="input-workout"
+          onChange={(e) => {
+            setWorkout(e.target.value);
+          }}
+        />
+        <button
+          className="profile-btn create-btn"
+          onClick={() => {
+            createWorkout();
+          }}
+        >
+          Add Workout
+        </button>
+        <button
+          className="profile-btn disconnect-btn"
+          onClick={() => {
+            disconnect();
+          }}
+        >
+          Disconnect
+        </button>
       </div>
 
       <ul className="workout-list">
         {workouts.map((e) => (
-          <li className="todo-item">{e.title}</li>
+          <li className="workout-item">{e.title}</li>
         ))}
       </ul>
     </div>
