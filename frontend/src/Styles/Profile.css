@@ -33,6 +33,11 @@
   letter-spacing: 0.04rem;
 }
 
+.library-link{
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.12rem;
+}
 .profile-input-button-container {
   display: flex;
   align-items: center;

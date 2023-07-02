@@ -4,6 +4,10 @@ import axios from "axios";
 
 function Profile() {
   const navigate = useNavigate();
+  function redirectToExerciseLibrary() {
+    window.open("/exercise-library", "_blank");
+  }
+
   const [workout, setWorkout] = useState("");
   const [workouts, setWorkouts] = useState([]);
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
@@ -66,12 +70,9 @@ function Profile() {
     axios
     .delete("http://localhost:3636/workout/user/" + userId)
     .then(() => {
-      // Handle the successful response from the server
       console.log("Workouts reset successfully");
-      // Perform any additional actions if needed
     })
     .catch((error) => {
-      // Handle any errors that occurred during the request
       console.error("Error resetting workouts:", error);
     });
   setWorkouts([]);
@@ -113,6 +114,7 @@ function Profile() {
       <p className="description-text">
         Do you want to set a workout routine to stay fit? Add your favorite
         exercises or workouts below to create a program that fits your needs!
+        Need some inspiration?Check out our  <a onClick={redirectToExerciseLibrary} className="library-link" >Exercise Library!</a> 
       </p>
       <div className="profile-input-button-container">
         <input
