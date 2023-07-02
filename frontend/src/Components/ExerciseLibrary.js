@@ -6,6 +6,7 @@ function ExerciseLibrary() {
   const [muscle, setMuscle] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
+  //fetch exercises when muscle or search term change
   useEffect(() => {
     const fetchExercises = async () => {
       try {
@@ -19,7 +20,6 @@ function ExerciseLibrary() {
             params: {
               muscle,
               name: searchTerm,
-              // other optional parameters if needed
             },
           }
         );
@@ -32,31 +32,33 @@ function ExerciseLibrary() {
     fetchExercises();
   }, [muscle, searchTerm]);
 
+    //input handling
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
   return (
-    <div>
-      <h1>Exercise Library</h1>
+    <div className='library-container'>
+      <h1 className='library-title'>Workout Exercise Library</h1>
       <div>
         <input
           type="text"
           placeholder="Search exercises by muscle..."
           value={searchTerm}
           onChange={handleSearch}
+          className='library-input-bar'
         />
       </div>
 
       <ul>
         {exercises.map((exercise) => (
           <li key={exercise.name}>
-            <h3>{exercise.name}</h3>
-            <p>Type: {exercise.type}</p>
-            <p>Muscle: {exercise.muscle}</p>
-            <p>Equipment:{exercise.equipment}</p>
-            <p> Difficulty: {exercise.difficulty}</p>
-            <p>Instructions: {exercise.instructions}</p>
+            <h2>{exercise.name}</h2>
+            <p> <span>Type:</span> {exercise.type}</p>
+            <p> <span>Muscle:</span> {exercise.muscle}</p>
+            <p><span>Equipment:</span>{exercise.equipment}</p>
+            <p> <span>Difficulty:</span> {exercise.difficulty}</p>
+            <p className='instructions-text'> <span>Instructions:</span> {exercise.instructions}</p>
           </li>
         ))}
       </ul>

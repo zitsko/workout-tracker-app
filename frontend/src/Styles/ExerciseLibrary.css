@@ -1,0 +1,30 @@
+.library-container{
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+.library-title{
+  letter-spacing: 0.185rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.library-input-bar{
+    padding: 1em 2em;
+    width: 30%;
+    margin-left:1.8rem;
+}
+
+p{
+    letter-spacing: 0.03rem;
+}
+
+p span{
+    font-weight: bold;
+}
+.instructions-text{
+    line-height: 1.5;
+}
