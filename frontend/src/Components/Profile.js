@@ -10,7 +10,11 @@ function Profile() {
 
   const [workout, setWorkout] = useState("");
   const [workouts, setWorkouts] = useState([]);
+
+
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
+ 
+
 
   const [user, setUser] = useState({
     _id: "",
@@ -182,3 +186,4 @@ function Profile() {
 }
 
 export default Profile;
+
