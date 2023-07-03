@@ -40,7 +40,7 @@ npm start
 
 1. Sign up or log in to your account.
 2. Create and customize your workout routines.
-3. Explore the exercise library for inspiration and add exercises to your routines.
+3. Explore the exercise library for inspiration and add exercises to your routines by copying to clipboard by clicking on the exercise name.
 4. Track your workout progress by recording completed workouts.
 5. Edit, update, or delete existing workouts as needed.
 6. Disconnect from your account when you're done.
