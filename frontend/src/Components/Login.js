@@ -14,7 +14,7 @@ function Login() {
 
   function login() {
     axios
-      .post(`${backendUrl}/user/login`, { email, password })
+      .post('https://workout-tracker-api-har1.onrender.com'/user/login, { email, password })
       .then(({ data }) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
