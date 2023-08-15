@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import backendUrl from "../configBackend";
 
 function Profile() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Profile() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post("http://localhost:3636/user/verify", {
+        .post("${backendUrl}/user/verify", {
           token: localStorage.getItem("token"),
         })
         .then(({ data }) => {
@@ -41,7 +42,7 @@ function Profile() {
   }, []);
 
   function getMyWorkouts(userId) {
-    axios.get("http://localhost:3636/workout/" + userId)
+    axios.get("${backendUrl}/workout/" + userId)
     .then(({ data }) => {
       setWorkouts(data);
       setUpdatedWorkouts(new Array(data.length).fill(""));
@@ -50,7 +51,7 @@ function Profile() {
 
   function addWorkout() {
     axios
-      .post("http://localhost:3636/workout/", {
+      .post("${backendUrl}/workout/", {
         title: workout,
         userId: user._id,
       })
@@ -62,7 +63,7 @@ function Profile() {
 
   function deleteWorkout(workoutId) {
     axios
-      .delete(`https://workout-tracker-api-har1.onrender.com/workout/${workoutId}`)
+      .delete(`${backendUrl}/workout/${workoutId}`)
       .then(() => {
         getMyWorkouts(user._id);
       })
@@ -73,7 +74,7 @@ function Profile() {
 
   function resetWorkouts(userId)  {
     axios
-    .delete("http://localhost:3636/workout/user/" + userId)
+    .delete("${backendUrl}/workout/user/" + userId)
     .then(() => {
       console.log("Workouts reset successfully");
     })
@@ -88,7 +89,7 @@ function Profile() {
   function updateWorkout(workoutId, index) {
     const updatedTitle = updatedWorkouts[index];
     axios
-      .put(`http://localhost:3636/workout/${workoutId}`, { title: updatedTitle })
+      .put(`${backendUrl}/workout/${workoutId}`, { title: updatedTitle })
       .then(() => {
         const updatedArray = [...updatedWorkouts];
         updatedArray[index] = "";
