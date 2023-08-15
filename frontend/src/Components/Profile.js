@@ -5,10 +5,15 @@ import backendUrl from "../configBackend";
 
 function Profile() {
   const navigate = useNavigate();
-  function redirectToExerciseLibrary() {
-    window.open("/exercise-library", "_blank");
-  }
 
+  // function redirectToExerciseLibrary() {
+  //   window.open("/exercise-library", "_blank");
+  // }
+  function redirectToExerciseLibrary() {
+    const exerciseLibraryUrl = `${backendUrl}/exercise-library`;
+    window.open(exerciseLibraryUrl, "_blank");
+  }
+  
   const [workout, setWorkout] = useState("");
   const [workouts, setWorkouts] = useState([]);
 
