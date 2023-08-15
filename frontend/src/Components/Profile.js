@@ -6,8 +6,12 @@ import backendUrl from "../configBackend";
 function Profile() {
   const navigate = useNavigate();
   
+  // function redirectToExerciseLibrary() {
+  //   window.open("/exercise-library", "_blank");
+  // }
   function redirectToExerciseLibrary() {
-    window.open("/exercise-library", "_blank");
+    const exerciseLibraryURL = `${window.location.origin}/exercise-library`;
+    window.open(exerciseLibraryURL, "_blank");
   }
 
   const [workout, setWorkout] = useState("");
