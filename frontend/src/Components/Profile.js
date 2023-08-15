@@ -26,7 +26,7 @@ function Profile() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .post("${backendUrl}/user/verify", {
+        .post(`${backendUrl}/user/verify`, {
           token: localStorage.getItem("token"),
         })
         .then(({ data }) => {
@@ -43,7 +43,7 @@ function Profile() {
   }, []);
 
   function getMyWorkouts(userId) {
-    axios.get("${backendUrl}/workout/" + userId)
+    axios.get(`${backendUrl}/workout/` + userId)
     .then(({ data }) => {
       setWorkouts(data);
       setUpdatedWorkouts(new Array(data.length).fill(""));
@@ -52,7 +52,7 @@ function Profile() {
 
   function addWorkout() {
     axios
-      .post("${backendUrl}/workout/", {
+      .post(`${backendUrl}/workout/`, {
         title: workout,
         userId: user._id,
       })
@@ -75,7 +75,7 @@ function Profile() {
 
   function resetWorkouts(userId)  {
     axios
-    .delete("${backendUrl}/workout/user/" + userId)
+    .delete(`${backendUrl}/workout/user/` + userId)
     .then(() => {
       console.log("Workouts reset successfully");
     })
