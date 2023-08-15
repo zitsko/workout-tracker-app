@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import backendUrl from "../configBackend";
 
 function Login() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Login() {
 
   function login() {
     axios
-      .post("http://localhost:3636/user/login", { email, password })
+      .post(`${backendUrl}/user/login`, { email, password })
       .then(({ data }) => {
         if (data.token) {
           localStorage.setItem("token", data.token);

@@ -11,7 +11,7 @@ function Signup() {
     navigate("/");
   }
     function signup(){
-      axios.post("http://localhost:3636/user/signup", {email,password}).then(({ data}) => {
+      axios.post(`${backendUrl}/user/signup`, {email,password}).then(({ data}) => {
         if(data.token) {
           localStorage.setItem("token",data.token);
           navigate("/profile")
