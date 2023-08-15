@@ -41,7 +41,8 @@ function Profile() {
   }, []);
 
   function getMyWorkouts(userId) {
-    axios.get("http://localhost:3636/workout/" + userId).then(({ data }) => {
+    axios.get("http://localhost:3636/workout/" + userId)
+    .then(({ data }) => {
       setWorkouts(data);
       setUpdatedWorkouts(new Array(data.length).fill(""));
     });
@@ -61,7 +62,7 @@ function Profile() {
 
   function deleteWorkout(workoutId) {
     axios
-      .delete(`http://localhost:3636/workout/${workoutId}`)
+      .delete(`https://workout-tracker-api-har1.onrender.com/workout/${workoutId}`)
       .then(() => {
         getMyWorkouts(user._id);
       })
