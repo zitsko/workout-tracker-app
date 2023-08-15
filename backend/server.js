@@ -4,7 +4,7 @@ const cors =require("cors");
 app.use(express.json());
 app.use(
     cors({
-        origin:"https://workout-tracker-api-har1.onrender.com"
+        origin:"https://workout-tracker-16f1.onrender.com"
     })
 );
 
