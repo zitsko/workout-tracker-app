@@ -2,15 +2,15 @@ const express = require("express");
 const app = express();
 const cors =require("cors");
 app.use(express.json());
-
-const workoutRouter = require("./routers/workoutRouter.js")
-const userRouter = require("./routers/userRouter.js")
-
 app.use(
     cors({
         origin:"https://workout-tracker-api-har1.onrender.com"
     })
 );
+
+const workoutRouter = require("./routers/workoutRouter.js")
+const userRouter = require("./routers/userRouter.js")
+
 
 app.use("/workout", workoutRouter);
 app.use("/user", userRouter);
