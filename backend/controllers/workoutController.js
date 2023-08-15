@@ -25,10 +25,16 @@ const getAllUserWorkout = async (req, res) => {
   res.send(userWorkouts);
 };
 
+const deleteAllUserWorkouts = async (req, res) => {
+  await Workout.deleteMany({ userId: req.params.userId });
+  res.send({ msg: "All workouts deleted for the user" });
+};
+
 module.exports = {
   getAllWorkouts,
   postWorkout,
   deleteWorkout,
   updateWorkout,
   getAllUserWorkout,
+  deleteAllUserWorkouts,
 };

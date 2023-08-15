@@ -8,7 +8,7 @@ const userRouter = require("./routers/userRouter.js")
 
 app.use(
     cors({
-        origin:"*"
+        origin:"https://workout-tracker-api-har1.onrender.com"
     })
 );
 
