@@ -113,9 +113,8 @@ function Profile() {
   return (
     <div className="homepage-container">
       <div className="flex-row profile-header ">
-        <FontAwesomeIcon icon={faUser} size="lg" />
+      <FontAwesomeIcon icon={faUser} size="xl" className="faUser" />
         <h1 className="profile-name text-title">
-          Profile of
           {user.email}
         </h1>
         <button

@@ -1,6 +1,6 @@
 
 .profile-header {
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -9,15 +9,17 @@
   text-align: center;
 }
 
+.faUser{
+  color: var(--primary-color);
+}
+
 .library-link{
   font-weight: bold;
   cursor: pointer;
   letter-spacing: 0.12rem;
 }
 .profile-input-button-container {
-  /* display: flex; */
   align-items: center;
-  /* gap: 1.25rem; */
   margin-top: 1.8rem;
 }
 
