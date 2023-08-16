@@ -139,7 +139,7 @@ function Profile() {
           type="text"
           placeholder="Create your routine..."
           value={workout}
-          className="input-workout"
+          className="border-bottom-input input-workout"
           onChange={(e) => {
             setWorkout(e.target.value);
           }}

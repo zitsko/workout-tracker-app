@@ -20,24 +20,9 @@
 }
 
 .input-workout {
-  flex-grow: 1;
-  padding: 0.625rem;
-  border: none;
-  border-bottom: 0.0625rem solid #aaa;
+  flex-grow: 1; 
   margin-right: 0.625rem;
 }
-
-/* .add-btn,
-.reset-btn {
-  padding: 0.5625rem 0.9375rem;
-  border-radius: 0.3125rem;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  background-color: #2e5ca7ec;
-} */
 
 .workout-list {
   margin: 0;
@@ -67,22 +52,3 @@
   margin-right: 0.625rem;
 }
 
-
-/* .update-btn,
-.delete-workout-btn {
-  padding: 0.5625rem 0.9375rem;
-  border-radius: 0.3125rem;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-} */
-
-/* .update-btn {
-  background-color: #2e5ca7ec;
-  margin-right: 0.625rem;
-}
-
-.delete-workout-btn {
-  background-color: #e71c1c;
-} */
