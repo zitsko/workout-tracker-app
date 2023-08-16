@@ -113,9 +113,8 @@ function Profile() {
   return (
     <div className="homepage-container">
       <div className="flex-row profile-header ">
-      <FontAwesomeIcon icon={faUser} size="xl" className="faUser" />
-        <h1 className="profile-name text-title">
-          {user.email}
+           <h1 className="profile-name text-title">
+            Welcome {user.email}
         </h1>
         <button
           className="btn disconnect-btn"
@@ -147,17 +146,16 @@ function Profile() {
         />
 
         <button
-          className="btn"
+          className="btn primary-btn"
           onClick={() => {
             addWorkout();
           }}
         >
-          Add Workout
+         +{" "}
           <FontAwesomeIcon icon={faDumbbell} size="lg" />
         </button>
 
-        <button className="btn" onClick={resetWorkouts}>
-          Reset Workouts
+        <button className="btn delete-btn" onClick={resetWorkouts}>
           <FontAwesomeIcon icon={faTrash} size="lg" />
         </button>
       </div>
@@ -180,13 +178,13 @@ function Profile() {
               className="workout-input"
             />
 
-            <button className="btn" onClick={() => updateWorkout(e._id, index)}>
-              Update
+            <button className="btn primary-btn" onClick={() => updateWorkout(e._id, index)}>
+              
               <FontAwesomeIcon icon={faPencil} size="lg" />
             </button>
 
-            <button className="btn" onClick={() => deleteWorkout(e._id)}>
-              Delete
+            <button className="btn delete-btn" onClick={() => deleteWorkout(e._id)}>
+              
               <FontAwesomeIcon icon={faDeleteLeft} size="lg" />
             </button>
           </li>

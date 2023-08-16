@@ -49,3 +49,11 @@
     margin-top: var(--m16);
     margin-bottom: var(--m16);
   }
+
+  .primary-btn{
+    background-color: var(--primary-color);
+  }
+
+  .delete-btn{
+    background-color: var(--danger-color);
+  }
