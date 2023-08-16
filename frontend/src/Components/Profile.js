@@ -2,10 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import backendUrl from "../configBackend";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 
 function Profile() {
   const navigate = useNavigate();
-  
+
   // function redirectToExerciseLibrary() {
   //   window.open("/exercise-library", "_blank");
   // }
@@ -17,9 +25,8 @@ function Profile() {
   const [workout, setWorkout] = useState("");
   const [workouts, setWorkouts] = useState([]);
 
-
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
- 
+
   const [user, setUser] = useState({
     _id: "",
     email: "",
@@ -45,8 +52,7 @@ function Profile() {
   }, []);
 
   function getMyWorkouts(userId) {
-    axios.get(`${backendUrl}/workout/` + userId)
-    .then(({ data }) => {
+    axios.get(`${backendUrl}/workout/` + userId).then(({ data }) => {
       setWorkouts(data);
       setUpdatedWorkouts(new Array(data.length).fill(""));
     });
@@ -75,19 +81,18 @@ function Profile() {
       });
   }
 
-  function resetWorkouts(userId)  {
+  function resetWorkouts(userId) {
     axios
-    .delete(`${backendUrl}/workout/user/` + userId)
-    .then(() => {
-      console.log("Workouts reset successfully");
-    })
-    .catch((error) => {
-      console.error("Error resetting workouts:", error);
-    });
-  setWorkouts([]);
-  setUpdatedWorkouts([]);
-};
-
+      .delete(`${backendUrl}/workout/user/` + userId)
+      .then(() => {
+        console.log("Workouts reset successfully");
+      })
+      .catch((error) => {
+        console.error("Error resetting workouts:", error);
+      });
+    setWorkouts([]);
+    setUpdatedWorkouts([]);
+  }
 
   function updateWorkout(workoutId, index) {
     const updatedTitle = updatedWorkouts[index];
@@ -109,21 +114,28 @@ function Profile() {
   return (
     <div className="homepage-container">
       <div className="flex-row profile-header ">
-        <h1 className="profile-name text-title">Profile of {user.email}</h1>
+        <h1 className="profile-name text-title">
+          Profile of 
+          {user.email}
+          </h1>
+          <FontAwesomeIcon icon={faUser} size="lg" />
         <button
           className="btn disconnect-btn"
           onClick={() => {
             disconnect();
           }}
         >
-          Logout
+          <FontAwesomeIcon icon={faPowerOff} size="lg" />
         </button>
       </div>
 
       <p className="description-text">
         Do you want to set a workout routine to stay fit? Add your favorite
         exercises or workouts below to create a program that fits your needs!
-        Need some inspiration?Check out our  <a onClick={redirectToExerciseLibrary} className="library-link" >Exercise Library!</a> 
+        Need some inspiration?Check out our{" "}
+        <a onClick={redirectToExerciseLibrary} className="library-link">
+          Exercise Library!
+        </a>
       </p>
       <div className="flex-row profile-input-button-container">
         <input
@@ -143,18 +155,18 @@ function Profile() {
           }}
         >
           Add Workout
+          <FontAwesomeIcon icon={faDumbbell} size="lg" />
         </button>
 
         <button className="btn" onClick={resetWorkouts}>
-    Reset Workouts
-  </button>
-
+          Reset Workouts
+          <FontAwesomeIcon icon={faTrash} size="lg" />
+        </button>
       </div>
 
       <ul className="workout-list">
         {workouts.map((e, index) => (
           <li className="workout-item" key={e._id}>
-
             <span className="workout-title">{e.title}</span>
 
             <input
@@ -170,18 +182,14 @@ function Profile() {
               className="workout-input"
             />
 
-            <button
-              className="btn"
-              onClick={() => updateWorkout(e._id, index)}
-            >
+            <button className="btn" onClick={() => updateWorkout(e._id, index)}>
               Update
+              <FontAwesomeIcon icon={faPencil} size="lg" />
             </button>
 
-            <button
-              className="btn"
-              onClick={() => deleteWorkout(e._id)}
-            >
+            <button className="btn" onClick={() => deleteWorkout(e._id)}>
               Delete
+              <FontAwesomeIcon icon={faDeleteLeft} size="lg" />
             </button>
           </li>
         ))}
@@ -191,4 +199,3 @@ function Profile() {
 }
 
 export default Profile;
-
