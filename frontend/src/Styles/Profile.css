@@ -40,20 +40,18 @@
 } */
 
 .workout-list {
-  list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 1.8rem;
 }
 
 .workout-item {
-  display: flex;
   align-items: center;
   padding: 0.3125rem;
   margin: 0.625rem 0;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  border-radius: 0.3125rem;
+  background-color: var(--white-color);
+  border-radius: var(--br);
   border: 0.0625rem solid #ccc;
 }
 

@@ -57,3 +57,8 @@
   .delete-btn{
     background-color: var(--danger-color);
   }
+  /* Other  */
+  
+  ul{
+    list-style: none;
+  }

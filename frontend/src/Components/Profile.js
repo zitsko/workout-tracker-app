@@ -163,7 +163,7 @@ function Profile() {
 
       <ul className="workout-list">
         {workouts.map((e, index) => (
-          <li className="workout-item" key={e._id}>
+          <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title">{e.title}</span>
 
             <input
