@@ -10,7 +10,6 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-
 function Profile() {
   const navigate = useNavigate();
 
@@ -114,11 +113,11 @@ function Profile() {
   return (
     <div className="homepage-container">
       <div className="flex-row profile-header ">
+        <FontAwesomeIcon icon={faUser} size="lg" />
         <h1 className="profile-name text-title">
-          Profile of 
+          Profile of
           {user.email}
-          </h1>
-          <FontAwesomeIcon icon={faUser} size="lg" />
+        </h1>
         <button
           className="btn disconnect-btn"
           onClick={() => {
