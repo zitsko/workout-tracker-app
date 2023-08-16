@@ -8,7 +8,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const navigate = useNavigate();
@@ -151,7 +151,8 @@ function Profile() {
             addWorkout();
           }}
         >
-         +{" "}
+          <FontAwesomeIcon icon={faPlus} size="lg" />
+         {" "}
           <FontAwesomeIcon icon={faDumbbell} size="lg" />
         </button>
 
