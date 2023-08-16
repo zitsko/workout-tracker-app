@@ -1,0 +1,21 @@
+:root {
+    font-size: 16px;
+    --fs-text: 1.1rem;
+    --fs-title: 1.5rem;
+    --main-bg-color: #f4f4f4;
+    --dark-color: #000;
+    --white-color: #ffffff;
+    --danger-color: #e71c1c;
+    --primary-color: #2e5ca7ec;
+    --hover-primary-color: #1954b2ec;
+    --box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
+    --p20: 1.25rem;
+    --p16: 1rem;
+    --p12: 0.75rem;
+    --p10: 0.625rem;
+    --m16: 1rem;
+    --m12: 0.75rem;
+    --m28: 1.8rem;
+    --br: 0.3125rem;
+  }
+  

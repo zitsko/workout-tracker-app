@@ -1,0 +1,51 @@
+/* Layouts */
+.homepage-container,
+.library-container {
+  max-width: 37.5rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+.library-container {
+  max-width: 50rem;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.flex-row{
+    display: flex;
+    gap: var(--p16);
+}
+
+/* Typography */
+.text-title{
+    font-size: var(--fs-title);
+}
+
+.description-text {
+    line-height: 1.5;
+    letter-spacing: 0.04rem;
+  }
+
+/* Buttons */
+.btn{
+    padding: 0.5625rem 0.9375rem;
+    border-radius: var(--br);
+    color: var(--white-color);
+    font-size: var(--fs-text);
+    cursor: pointer;
+    border: none;
+  }
+
+  .disconnect-btn {
+    font-size: 1.2rem;
+    background-color: var(--danger-color);
+    margin-top: var(--m16);
+    margin-bottom: var(--m16);
+  }

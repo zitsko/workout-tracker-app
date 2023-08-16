@@ -20,8 +20,6 @@ function Profile() {
 
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
  
-
-
   const [user, setUser] = useState({
     _id: "",
     email: "",
@@ -109,16 +107,16 @@ function Profile() {
   }
 
   return (
-    <div className="profile-container">
-      <div className="profile-header">
-        <h1 className="profile-name">Profile of {user.email}</h1>
+    <div className="homepage-container">
+      <div className="flex-row profile-header ">
+        <h1 className="profile-name text-title">Profile of {user.email}</h1>
         <button
-          className="disconnect-btn"
+          className="btn disconnect-btn"
           onClick={() => {
             disconnect();
           }}
         >
-          Disconnect
+          Logout
         </button>
       </div>
 
@@ -127,7 +125,7 @@ function Profile() {
         exercises or workouts below to create a program that fits your needs!
         Need some inspiration?Check out our  <a onClick={redirectToExerciseLibrary} className="library-link" >Exercise Library!</a> 
       </p>
-      <div className="profile-input-button-container">
+      <div className="flex-row profile-input-button-container">
         <input
           type="text"
           placeholder="Create your routine..."
@@ -139,7 +137,7 @@ function Profile() {
         />
 
         <button
-          className="add-btn"
+          className="btn"
           onClick={() => {
             addWorkout();
           }}
@@ -147,7 +145,7 @@ function Profile() {
           Add Workout
         </button>
 
-        <button className="reset-btn" onClick={resetWorkouts}>
+        <button className="btn" onClick={resetWorkouts}>
     Reset Workouts
   </button>
 
@@ -173,14 +171,14 @@ function Profile() {
             />
 
             <button
-              className="update-btn"
+              className="btn"
               onClick={() => updateWorkout(e._id, index)}
             >
               Update
             </button>
 
             <button
-              className="delete-workout-btn"
+              className="btn"
               onClick={() => deleteWorkout(e._id)}
             >
               Delete
