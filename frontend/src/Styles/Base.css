@@ -46,6 +46,11 @@ body {
     letter-spacing: 0.04rem;
   }
 
+  .input-text{
+    letter-spacing:0.1rem;
+    font: var(--fs-text);
+  }
+
 /* Buttons */
 .btn{
     padding: 0.5625rem 0.9375rem;

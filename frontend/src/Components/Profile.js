@@ -162,7 +162,7 @@ function Profile() {
             isEditing ? "Edit your routine..." : "Create your routine..."
           }
           value={isEditing ? updatedWorkouts[editIndex] : workout}
-          className="border-bottom-input input-workout description-text"
+          className="border-bottom-input input-workout input-text"
           onChange={(e) => {
             if (isEditing) {
               const updatedArray = [...updatedWorkouts];
