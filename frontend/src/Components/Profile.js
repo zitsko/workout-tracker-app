@@ -155,6 +155,7 @@ function Profile() {
         </a>
       </p>
       <div className="flex-row profile-input-button-container">
+        {/* Add-Edit input */}
         <input
           type="text"
           placeholder={
@@ -171,8 +172,9 @@ function Profile() {
               setWorkout(e.target.value);
             }
           }}
+          disabled={isEditing && editIndex !== -1}
         />
-
+{/* Add-Edit button */}
         <button
           className="btn primary-btn"
           onClick={() => {
@@ -198,7 +200,7 @@ function Profile() {
         {workouts.map((e, index) => (
           <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title">{e.title}</span>
-
+          {/* Edit button */}
             <button
               className="btn primary-btn"
               onClick={() => {
@@ -208,7 +210,7 @@ function Profile() {
                 } else {
                   setIsEditing(true);
                   setEditIndex(index);
-                  setWorkout(e.title);
+                  // setWorkout(e.title);
                 }
               }}
             >
