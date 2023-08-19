@@ -70,28 +70,41 @@ function Profile() {
   }
 
   function deleteWorkout(workoutId) {
-    axios
-      .delete(`${backendUrl}/workout/${workoutId}`)
-      .then(() => {
-        getMyWorkouts(user._id);
-      })
-      .catch((error) => {
-        console.log("Error deleting workout:", error);
-      });
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this workout?"
+    ); 
+  
+    if (shouldDelete) {
+      axios
+        .delete(`${backendUrl}/workout/${workoutId}`)
+        .then(() => {
+          getMyWorkouts(user._id);
+        })
+        .catch((error) => {
+          console.log("Error deleting workout:", error);
+        });
+    }
   }
 
-  function resetWorkouts(userId) {
+function resetWorkouts(userId) {
+  const shouldReset = window.confirm(
+    "Are you sure you want to reset all workouts?"
+  ); 
+
+  if (shouldReset) {
     axios
       .delete(`${backendUrl}/workout/user/` + userId)
       .then(() => {
         console.log("Workouts reset successfully");
+        setWorkouts([]);
+        setUpdatedWorkouts([]);
       })
       .catch((error) => {
         console.error("Error resetting workouts:", error);
       });
-    setWorkouts([]);
-    setUpdatedWorkouts([]);
   }
+}
+
 
   function updateWorkout(workoutId, index) {
     const updatedTitle = updatedWorkouts[index];
@@ -106,8 +119,13 @@ function Profile() {
   }
 
   function disconnect() {
-    localStorage.removeItem("token");
-    navigate("/");
+    const shouldLogout = window.confirm(
+      "You are about to leave ,are you sure?"
+    );
+    if (shouldLogout) {
+      localStorage.removeItem("token");
+      navigate("/");
+    }
   }
 
   return (
