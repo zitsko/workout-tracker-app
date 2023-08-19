@@ -39,12 +39,11 @@
   background-color: var(--white-color);
   border-radius: var(--br);
   border: 0.0625rem solid #ccc;
-  width: 90%;
 }
 
 .workout-title {
   margin-left: 0.625rem;
-  flex-grow: 25;
+  flex-grow: 1;
 }
 
 .workout-item input {
