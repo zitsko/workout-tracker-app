@@ -39,13 +39,15 @@
   background-color: var(--white-color);
   border-radius: var(--br);
   border: 0.0625rem solid #ccc;
-  max-height: 20rem; /* Adjust this value as needed */
-  overflow-y: auto;
+  /* max-height: 20rem; /* Adjust this value as needed */
+  overflow-y: auto; */
 }
 
 .workout-title {
   margin-left: 0.625rem;
   flex-grow: 1;
+  word-wrap: break-word; /* Wrap text if it's too long */
+  white-space: normal; /* Allow line breaks */
 }
 
 .workout-item input {
