@@ -208,7 +208,7 @@ function Profile() {
                 } else {
                   setIsEditing(true);
                   setEditIndex(index);
-                  setWorkout(updatedWorkouts[index]);
+                  setWorkout(e.title);;
                 }
               }}
             >
