@@ -30,7 +30,7 @@ function Profile() {
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);// -1 indicates no edit mode
-
+  const [originalWorkout, setOriginalWorkout] = useState('');
   const [user, setUser] = useState({
     _id: "",
     email: "",
@@ -173,7 +173,7 @@ function Profile() {
           }}
         />
 
-        <button
+        {/* <button
           className="btn primary-btn"
           onClick={() => {
             if (isEditing) {
@@ -192,7 +192,51 @@ function Profile() {
         <button className="btn delete-btn" onClick={resetWorkouts}>
           <FontAwesomeIcon icon={faTrash} size="lg" />
         </button>
-      </div>
+      </div> */}
+       {isEditing ? (
+    <>
+      <button
+        className="btn primary-btn"
+        onClick={() => {
+          updateWorkout(workouts[editIndex]._id, editIndex);
+          setEditIndex(-1);
+          setIsEditing(false);
+        }}
+      >
+        <FontAwesomeIcon icon={faCheck} size="lg" />
+      </button>
+
+      <button
+        className="btn delete-btn"
+        onClick={() => {
+          setIsEditing(false);
+          setEditIndex(-1);
+          setWorkout(originalWorkout); // Reset input to original workout
+        }}
+      >
+        <FontAwesomeIcon icon={faTimes} size="lg" />
+      </button>
+    </>
+  ) : (
+    <button
+      className="btn primary-btn"
+      onClick={() => {
+        addWorkout();
+        setWorkout(''); // Clear input after adding
+      }}
+    >
+      <FontAwesomeIcon icon={faPlus} size="lg" />{" "}
+      <FontAwesomeIcon icon={faDumbbell} size="lg" />
+    </button>
+  )}
+
+  <button
+    className="btn delete-btn"
+    onClick={resetWorkouts}
+    disabled={workouts.length === 0}
+  >
+    <FontAwesomeIcon icon={faTrash} size="lg" />
+  </button>
 
       <ul className="workout-list">
         {workouts.map((e, index) => (
