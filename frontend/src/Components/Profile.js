@@ -3,12 +3,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import backendUrl from "../configBackend";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPowerOff,
+  faPlus,
+  faDumbbell,
+  faTrash,
+  faPencil,
+  faCheck,
+  faDeleteLeft,
+} from "@fortawesome/free-solid-svg-icons";
+// import { faPencil } from "@fortawesome/free-solid-svg-icons";
+// import { faTrash } from "@fortawesome/free-solid-svg-icons";
+// import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+// import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+// import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+// import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const navigate = useNavigate();
@@ -25,7 +34,8 @@ function Profile() {
   const [workouts, setWorkouts] = useState([]);
 
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
-  const [editIndex, setEditIndex] = useState(-1); // -1 indicates no edit mode
+  const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(-1);
 
   const [user, setUser] = useState({
     _id: "",
@@ -73,8 +83,8 @@ function Profile() {
   function deleteWorkout(workoutId) {
     const shouldDelete = window.confirm(
       "Are you sure you want to delete this workout?"
-    ); 
-  
+    );
+
     if (shouldDelete) {
       axios
         .delete(`${backendUrl}/workout/${workoutId}`)
@@ -87,25 +97,24 @@ function Profile() {
     }
   }
 
-function resetWorkouts(userId) {
-  const shouldReset = window.confirm(
-    "Are you sure you want to reset all workouts?"
-  ); 
+  function resetWorkouts(userId) {
+    const shouldReset = window.confirm(
+      "Are you sure you want to reset all workouts?"
+    );
 
-  if (shouldReset) {
-    axios
-      .delete(`${backendUrl}/workout/user/` + userId)
-      .then(() => {
-        console.log("Workouts reset successfully");
-        setWorkouts([]);
-        setUpdatedWorkouts([]);
-      })
-      .catch((error) => {
-        console.error("Error resetting workouts:", error);
-      });
+    if (shouldReset) {
+      axios
+        .delete(`${backendUrl}/workout/user/` + userId)
+        .then(() => {
+          console.log("Workouts reset successfully");
+          setWorkouts([]);
+          setUpdatedWorkouts([]);
+        })
+        .catch((error) => {
+          console.error("Error resetting workouts:", error);
+        });
+    }
   }
-}
-
 
   function updateWorkout(workoutId, index) {
     const updatedTitle = updatedWorkouts[index];
@@ -132,9 +141,7 @@ function resetWorkouts(userId) {
   return (
     <div className="homepage-container">
       <div className="flex-row profile-header ">
-           <h1 className="profile-name text-title">
-            Welcome {user.email}
-        </h1>
+        <h1 className="profile-name text-title">Welcome {user.email}</h1>
         <button
           className="btn disconnect-btn"
           onClick={() => {
@@ -156,22 +163,35 @@ function resetWorkouts(userId) {
       <div className="flex-row profile-input-button-container">
         <input
           type="text"
-          placeholder="Create your routine..."
-          value={workout}
+          placeholder={
+            isEditing ? "Edit your routine..." : "Create your routine..."
+          }
+          value={isEditing ? updatedWorkouts[editIndex] : workout}
           className="border-bottom-input input-workout"
           onChange={(e) => {
-            setWorkout(e.target.value);
+            if (isEditing) {
+              const updatedArray = [...updatedWorkouts];
+              updatedArray[editIndex] = e.target.value;
+              setUpdatedWorkouts(updatedArray);
+            } else {
+              setWorkout(e.target.value);
+            }
           }}
         />
 
         <button
           className="btn primary-btn"
           onClick={() => {
-            addWorkout();
+            if (isEditing) {
+              updateWorkout(workouts[editIndex]._id, editIndex);
+              setEditIndex(-1);
+            } else {
+              addWorkout();
+            }
+            setIsEditing(false);
           }}
         >
-          <FontAwesomeIcon icon={faPlus} size="lg" />
-         {" "}
+          <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />
           <FontAwesomeIcon icon={faDumbbell} size="lg" />
         </button>
 
@@ -185,26 +205,45 @@ function resetWorkouts(userId) {
           <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title">{e.title}</span>
 
-            <input
-              type="text"
-              placeholder="edit here"
-              value={updatedWorkouts[index]}
-              onChange={(e) => {
-                const updatedArray = [...updatedWorkouts];
-                updatedArray[index] = e.target.value;
-                setUpdatedWorkouts(updatedArray);
-              }}
-              onClick={() => updateWorkout(e._id, index)}
-              className="workout-input"
-            />
+            {isEditing && editIndex === index ? (
+              <input
+                type="text"
+                placeholder="edit here"
+                value={updatedWorkouts[index]}
+                onChange={(e) => {
+                  const updatedArray = [...updatedWorkouts];
+                  updatedArray[index] = e.target.value;
+                  setUpdatedWorkouts(updatedArray);
+                }}
+                className="workout-input"
+              />
+            ) : (
+              <span className="workout-title">{e.title}</span>
+            )}
 
-            <button className="btn primary-btn" onClick={() => updateWorkout(e._id, index)}>
-              
-              <FontAwesomeIcon icon={faPencil} size="lg" />
+            <button
+              className="btn primary-btn"
+              onClick={() => {
+                if (isEditing && editIndex === index) {
+                  updateWorkout(workouts[editIndex]._id, editIndex);
+                  setEditIndex(-1);
+                } else {
+                  setIsEditing(true);
+                  setEditIndex(index);
+                  setWorkout(updatedWorkouts[index]);
+                }
+              }}
+            >
+              <FontAwesomeIcon
+                icon={isEditing && editIndex === index ? faCheck : faPencil}
+                size="lg"
+              />
             </button>
 
-            <button className="btn delete-btn" onClick={() => deleteWorkout(e._id)}>
-              
+            <button
+              className="btn delete-btn"
+              onClick={() => deleteWorkout(e._id)}
+            >
               <FontAwesomeIcon icon={faDeleteLeft} size="lg" />
             </button>
           </li>
