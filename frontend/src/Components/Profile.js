@@ -29,8 +29,8 @@ function Profile() {
 
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(-1);// -1 indicates no edit mode
-  const [originalWorkout, setOriginalWorkout] = useState('');
+  const [editIndex, setEditIndex] = useState(-1); // -1 indicates no edit mode
+  const [originalWorkout, setOriginalWorkout] = useState("");
   const [user, setUser] = useState({
     _id: "",
     email: "",
@@ -162,7 +162,7 @@ function Profile() {
             isEditing ? "Edit your routine..." : "Create your routine..."
           }
           value={isEditing ? updatedWorkouts[editIndex] : workout}
-          className="border-bottom-input input-workout"
+          className="border-bottom-input input-workout description-text"
           onChange={(e) => {
             if (isEditing) {
               const updatedArray = [...updatedWorkouts];
@@ -173,7 +173,7 @@ function Profile() {
             }
           }}
         />
-{/* Add-Edit button */}
+        {/* Add-Edit button */}
         <button
           className="btn primary-btn"
           onClick={() => {
@@ -187,7 +187,7 @@ function Profile() {
           }}
         >
           <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />{" "}
-          <FontAwesomeIcon icon={faDumbbell} size="lg" />
+          {/* <FontAwesomeIcon icon={faDumbbell} size="lg" /> */}
         </button>
 
         <button className="btn delete-btn" onClick={resetWorkouts}>
@@ -199,7 +199,7 @@ function Profile() {
         {workouts.map((e, index) => (
           <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title">{e.title}</span>
-          {/* Edit button */}
+            {/* Edit button */}
             <button
               className="btn primary-btn"
               onClick={() => {
@@ -209,7 +209,7 @@ function Profile() {
                 } else {
                   setIsEditing(true);
                   setEditIndex(index);
-                  setUpdatedWorkouts(workouts.map(e => e.title));
+                  setUpdatedWorkouts(workouts.map((e) => e.title));
                 }
               }}
             >
