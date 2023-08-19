@@ -47,7 +47,7 @@ body {
   }
 
   .input-text{
-    letter-spacing:0.1rem;
+    letter-spacing:0.15rem;
     font: var(--fs-text);
   }
 

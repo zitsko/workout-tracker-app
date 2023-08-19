@@ -198,7 +198,7 @@ function Profile() {
       <ul className="workout-list">
         {workouts.map((e, index) => (
           <li className="flex-row workout-item" key={e._id}>
-            <span className="workout-title">{e.title}</span>
+            <span className="workout-title input-text">{e.title}</span>
             {/* Edit button */}
             <button
               className="btn primary-btn"
