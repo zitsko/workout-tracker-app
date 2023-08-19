@@ -172,7 +172,6 @@ function Profile() {
               setWorkout(e.target.value);
             }
           }}
-          disabled={isEditing && editIndex !== -1}
         />
 {/* Add-Edit button */}
         <button
@@ -210,7 +209,7 @@ function Profile() {
                 } else {
                   setIsEditing(true);
                   setEditIndex(index);
-                  // setWorkout(e.title);
+                  setUpdatedWorkouts(workouts.map(e => e.title));
                 }
               }}
             >
