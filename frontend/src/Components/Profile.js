@@ -29,7 +29,7 @@ function Profile() {
 
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(-1); // -1 indicates no edit mode
+  const [editIndex, setEditIndex] = useState(-1);// -1 indicates no edit mode
 
   const [user, setUser] = useState({
     _id: "",
@@ -160,7 +160,7 @@ function Profile() {
           placeholder={
             isEditing ? "Edit your routine..." : "Create your routine..."
           }
-          value={isEditing ? workout : updatedWorkouts[editIndex] || workout}
+          value={isEditing ? updatedWorkouts[editIndex] : workout}
           className="border-bottom-input input-workout"
           onChange={(e) => {
             if (isEditing) {
@@ -179,10 +179,8 @@ function Profile() {
             if (isEditing) {
               updateWorkout(workouts[editIndex]._id, editIndex);
               setEditIndex(-1);
-              setWorkout('');
             } else {
               addWorkout();
-              setWorkout('');
             }
             setIsEditing(false);
           }}
