@@ -12,12 +12,6 @@ import {
   faCheck,
   faDeleteLeft,
 } from "@fortawesome/free-solid-svg-icons";
-// import { faPencil } from "@fortawesome/free-solid-svg-icons";
-// import { faTrash } from "@fortawesome/free-solid-svg-icons";
-// import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-// import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-// import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-// import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const navigate = useNavigate();
@@ -35,7 +29,7 @@ function Profile() {
 
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [editIndex, setEditIndex] = useState(-1);
+  const [editIndex, setEditIndex] = useState(-1); // -1 indicates no edit mode
 
   const [user, setUser] = useState({
     _id: "",
@@ -166,7 +160,7 @@ function Profile() {
           placeholder={
             isEditing ? "Edit your routine..." : "Create your routine..."
           }
-          value={isEditing ? updatedWorkouts[editIndex] : workout}
+          value={isEditing ? workout : updatedWorkouts[editIndex] || workout}
           className="border-bottom-input input-workout"
           onChange={(e) => {
             if (isEditing) {
@@ -185,8 +179,10 @@ function Profile() {
             if (isEditing) {
               updateWorkout(workouts[editIndex]._id, editIndex);
               setEditIndex(-1);
+              setWorkout('');
             } else {
               addWorkout();
+              setWorkout('');
             }
             setIsEditing(false);
           }}
