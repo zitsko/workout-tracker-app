@@ -25,14 +25,20 @@
   margin-right: 0.625rem;
 }
 
-.workout-list {
+/* .workout-list {
   margin: 0;
   padding: 0;
   margin-top: 1.8rem;
+} */
+.workout-list {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 0.625rem;
 }
 
+
 .workout-item {
-  align-items: center;
+  /* align-items: center; */
   padding: 0.3125rem;
   margin: 0.625rem 0;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
@@ -41,10 +47,10 @@
   border: 0.0625rem solid #ccc;
 }
 
-.workout-title {
+/* .workout-title {
   margin-left: 0.625rem;
- 
-}
+  flex-grow: 1;
+} */
 
 .workout-item input {
   padding: 0.3125rem;
