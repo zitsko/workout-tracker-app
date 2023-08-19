@@ -191,7 +191,7 @@ function Profile() {
             setIsEditing(false);
           }}
         >
-          <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />
+          <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />{" "}
           <FontAwesomeIcon icon={faDumbbell} size="lg" />
         </button>
 
@@ -204,22 +204,6 @@ function Profile() {
         {workouts.map((e, index) => (
           <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title">{e.title}</span>
-
-            {isEditing && editIndex === index ? (
-              <input
-                type="text"
-                placeholder="edit here"
-                value={updatedWorkouts[index]}
-                onChange={(e) => {
-                  const updatedArray = [...updatedWorkouts];
-                  updatedArray[index] = e.target.value;
-                  setUpdatedWorkouts(updatedArray);
-                }}
-                className="workout-input"
-              />
-            ) : (
-              <span className="workout-title">{e.title}</span>
-            )}
 
             <button
               className="btn primary-btn"
@@ -234,10 +218,7 @@ function Profile() {
                 }
               }}
             >
-              <FontAwesomeIcon
-                icon={isEditing && editIndex === index ? faCheck : faPencil}
-                size="lg"
-              />
+              <FontAwesomeIcon icon={faPencil} size="lg" />
             </button>
 
             <button
