@@ -44,20 +44,20 @@ function ExerciseLibrary() {
 
   return (
     <div className="library-container">
+      <div className="library-title-input-container flex-col">
       <h1 className="library-title">Workout Exercise Library</h1>
-      <div>
         <input
           type="text"
           placeholder="Search exercises by muscle..."
           value={searchTerm}
           onChange={handleSearch}
-          className="library-input-bar"
+          className="search-input library-input-bar"
         />
       </div>
 
-      <ul>
+      <ul className="library-exercises-list">
         {exercises.map((exercise) => (
-          <li key={exercise.name}>
+          <li key={exercise.name} className="library-exercise">
             <h2
               className="exercise-name"
               onClick={() => copyToClipboard(exercise.name)}
@@ -81,7 +81,7 @@ function ExerciseLibrary() {
               {" "}
               <span>Difficulty:</span> {exercise.difficulty}
             </p>
-            <p className="instructions-text">
+            <p className="description-text">
               {" "}
               <span>Instructions:</span> {exercise.instructions}
             </p>

@@ -86,7 +86,7 @@ function Profile() {
     }
   }
 
-  function resetWorkouts(userId) {
+  function resetWorkouts() {
     const shouldReset = window.confirm(
       "Are you sure you want to reset all workouts?"
     );

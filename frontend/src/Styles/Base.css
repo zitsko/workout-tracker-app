@@ -92,6 +92,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.search-input{
+  background-color: var(--main-bg-color);
+  color: var(--dark-color);
+  padding: 1.2rem;
+  border: none;
+ 
+}
+
 /* Other  */
 ul {
   list-style: none;
