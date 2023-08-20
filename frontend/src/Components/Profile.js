@@ -150,8 +150,27 @@ function Profile() {
         Do you want to set a workout routine to stay fit? Add your favorite
         exercises or workouts below to create a program that fits your needs!
         Need some inspiration?Check out our{" "}
-        <a onClick={redirectToExerciseLibrary} className="library-link">
-          Exercise Library!
+        <a
+          onClick={redirectToExerciseLibrary}
+          className="library-link animated-link"
+        >
+          <span>E</span>
+          <span>x</span>
+          <span>e</span>
+          <span>r</span>
+          <span>c</span>
+          <span>i</span>
+          <span>s</span>
+          <span>e</span>
+          <span>&nbsp;</span>
+          <span>L</span>
+          <span>i</span>
+          <span>b</span>
+          <span>r</span>
+          <span>a</span>
+          <span>r</span>
+          <span>y</span>
+          <span>!</span>
         </a>
       </p>
 

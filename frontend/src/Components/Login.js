@@ -26,12 +26,13 @@ function Login() {
   }
 
   return (
-    <div className="signup-login-container">
+    <div className="homepage-container">
       <h1 className="app-title">Workout Tracker</h1>
-      <div className="input-button-container">
+      <div className="flex-col input-button-container">
         <input
           type="email"
           placeholder="email"
+          className="signup-login-input"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -39,12 +40,13 @@ function Login() {
         <input
           type="password"
           placeholder="password"
+          className="signup-login-input"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
         <button
-          className="signup-login-btn"
+          className="btn primary-btn"
           onClick={() => {
             login();
           }}
@@ -52,8 +54,8 @@ function Login() {
           Login
         </button>
       </div>
-      <p>
-        If you do not have an account{" "}
+      <div className="flex-col text-anchor-container description-text">
+        <p>If you do not have an account </p>
         <a
           className="signup-login-anchor"
           onClick={() => {
@@ -63,7 +65,7 @@ function Login() {
           {" "}
           Signup Here
         </a>
-      </p>
+      </div>
     </div>
   );
 }
