@@ -154,7 +154,8 @@ function Profile() {
           Exercise Library!
         </a>
       </p>
-      <div className="flex-row profile-input-button-container">
+
+      <div className="flex-row workout-input-buttons-container">
         {/* Add-Edit input */}
         <input
           type="text"
@@ -173,55 +174,63 @@ function Profile() {
             }
           }}
         />
-        {/* Add-Edit button */}
-        <button
-          className="btn primary-btn"
-          onClick={() => {
-            if (isEditing) {
-              updateWorkout(workouts[editIndex]._id, editIndex);
-              setEditIndex(-1);
-            } else {
-              addWorkout();
-            }
-            setIsEditing(false);
-          }}
-        >
-          <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />{" "}
-          {/* <FontAwesomeIcon icon={faDumbbell} size="lg" /> */}
-        </button>
 
-        <button className="btn delete-btn" onClick={resetWorkouts}>
-          <FontAwesomeIcon icon={faTrash} size="lg" />
-        </button>
+        {/* Add/Edit-Reset */}
+        <div className="flex-row add-reset-container">
+          {/* Add-Edit button */}
+          <button
+            className="btn primary-btn"
+            onClick={() => {
+              if (isEditing) {
+                updateWorkout(workouts[editIndex]._id, editIndex);
+                setEditIndex(-1);
+              } else {
+                addWorkout();
+              }
+              setIsEditing(false);
+            }}
+          >
+            <FontAwesomeIcon icon={isEditing ? faCheck : faPlus} size="lg" />{" "}
+            {/* <FontAwesomeIcon icon={faDumbbell} size="lg" /> */}
+          </button>
+
+          <button className="btn delete-btn" onClick={resetWorkouts}>
+            <FontAwesomeIcon icon={faTrash} size="lg" />
+          </button>
+        </div>
       </div>
 
       <ul className="workout-list">
         {workouts.map((e, index) => (
           <li className="flex-row workout-item" key={e._id}>
             <span className="workout-title input-text">{e.title}</span>
-            {/* Edit button */}
-            <button
-              className="btn primary-btn"
-              onClick={() => {
-                if (isEditing && editIndex === index) {
-                  updateWorkout(workouts[editIndex]._id, editIndex);
-                  setEditIndex(-1);
-                } else {
-                  setIsEditing(true);
-                  setEditIndex(index);
-                  setUpdatedWorkouts(workouts.map((e) => e.title));
-                }
-              }}
-            >
-              <FontAwesomeIcon icon={faPencil} size="lg" />
-            </button>
 
-            <button
-              className="btn delete-btn"
-              onClick={() => deleteWorkout(e._id)}
-            >
-              <FontAwesomeIcon icon={faDeleteLeft} size="lg" />
-            </button>
+            <div className="flex-row edit-delete-container">
+              {/* Edit button */}
+              <button
+                className="btn primary-btn"
+                onClick={() => {
+                  if (isEditing && editIndex === index) {
+                    updateWorkout(workouts[editIndex]._id, editIndex);
+                    setEditIndex(-1);
+                  } else {
+                    setIsEditing(true);
+                    setEditIndex(index);
+                    setUpdatedWorkouts(workouts.map((e) => e.title));
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faPencil} size="lg" />
+              </button>
+
+              {/* Delete Button */}
+              <button
+                className="btn delete-btn"
+                onClick={() => deleteWorkout(e._id)}
+              >
+                <FontAwesomeIcon icon={faDeleteLeft} size="lg" />
+              </button>
+            </div>
           </li>
         ))}
       </ul>
