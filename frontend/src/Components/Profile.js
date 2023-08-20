@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPowerOff,
   faPlus,
-  faDumbbell,
   faTrash,
   faPencil,
   faCheck,
@@ -16,9 +15,6 @@ import {
 function Profile() {
   const navigate = useNavigate();
 
-  // function redirectToExerciseLibrary() {
-  //   window.open("/exercise-library", "_blank");
-  // }
   function redirectToExerciseLibrary() {
     const exerciseLibraryURL = `${window.location.origin}/exercise-library`;
     window.open(exerciseLibraryURL, "_blank");
@@ -30,7 +26,6 @@ function Profile() {
   const [updatedWorkouts, setUpdatedWorkouts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(-1); // -1 indicates no edit mode
-  const [originalWorkout, setOriginalWorkout] = useState("");
   const [user, setUser] = useState({
     _id: "",
     email: "",
@@ -98,7 +93,7 @@ function Profile() {
 
     if (shouldReset) {
       axios
-        .delete(`${backendUrl}/workout/user/` + userId)
+        .delete(`${backendUrl}/workout/`)
         .then(() => {
           console.log("Workouts reset successfully");
           setWorkouts([]);
