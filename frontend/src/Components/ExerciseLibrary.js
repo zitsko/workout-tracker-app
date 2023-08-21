@@ -7,6 +7,7 @@ function ExerciseLibrary() {
   const [exercises, setExercises] = useState([]);
   const [muscle, setMuscle] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [, setExpandedExercise] = useState(null);
 
   //fetch exercises when muscle or search term change
   useEffect(() => {
@@ -43,12 +44,15 @@ function ExerciseLibrary() {
     navigator.clipboard.writeText(text);
   };
 
+
+
+
   return (
     <div className="library-container">
-      <div className="library-title-input-container flex-col">        
-          <h1 className="library-title">Workout Exercise Library</h1>
+      <div className="library-title-input-container flex-col">
+        <h1 className="library-title">Workout Exercise Library</h1>
 
-          <div className="search-input-container flex-row">
+        <div className="search-input-container flex-row">
           <input
             type="text"
             placeholder="Search exercises by muscle..."
@@ -89,13 +93,15 @@ function ExerciseLibrary() {
               {" "}
               <span>Difficulty:</span> {exercise.difficulty}
             </p>
-            <p className="description-text">
-              {" "}
-              <span>Instructions:</span> {exercise.instructions}
-            </p>
-          </li>
-        ))}
-      </ul>
+
+            <p
+            className={`description-text instructions-text `}
+          >
+            <span>Instructions:</span> {exercise.instructions}
+          </p>
+        </li>
+      ))}
+    </ul>
     </div>
   );
 }
