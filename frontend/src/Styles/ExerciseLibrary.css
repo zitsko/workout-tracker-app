@@ -16,9 +16,24 @@
   text-align: center;
 }
 
-.library-input-bar{
-  width: 80%;  
+
+.search-input-container {
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: var(--br);
+  border: 1px solid #ccc;
+  width: 80%;
 }
+
+.library-input-bar {
+  flex: 1;
+}
+
+.faMagnifyingGlass {
+  color: #aaa;
+}
+
 
 .library-exercises-list{
   display:grid;

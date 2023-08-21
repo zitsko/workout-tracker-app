@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function ExerciseLibrary() {
   const [exercises, setExercises] = useState([]);
   const [muscle, setMuscle] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-
 
   //fetch exercises when muscle or search term change
   useEffect(() => {
@@ -44,15 +45,23 @@ function ExerciseLibrary() {
 
   return (
     <div className="library-container">
-      <div className="library-title-input-container flex-col">
-      <h1 className="library-title">Workout Exercise Library</h1>
-        <input
-          type="text"
-          placeholder="Search exercises by muscle..."
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-input library-input-bar"
-        />
+      <div className="library-title-input-container flex-col">        
+          <h1 className="library-title">Workout Exercise Library</h1>
+
+          <div className="search-input-container flex-row">
+          <input
+            type="text"
+            placeholder="Search exercises by muscle..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className="search-input library-input-bar"
+          />
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            size="lg"
+            className="faMagnifyingGlass"
+          />
+        </div>
       </div>
 
       <ul className="library-exercises-list">
@@ -62,8 +71,7 @@ function ExerciseLibrary() {
               className="exercise-name"
               onClick={() => copyToClipboard(exercise.name)}
             >
-              {exercise.name}  
-             
+              {exercise.name}
             </h2>
             <p>
               {" "}
