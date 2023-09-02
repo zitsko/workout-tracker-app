@@ -24,7 +24,7 @@ function Signup() {
   }
 
   return ( 
-    <div className="homepage-container">
+    <div className="homepage-container login-background">
     <h1 className="app-title">Workout Tracker</h1>
     <div className=" flex-col input-button-container">
       <input 
@@ -51,8 +51,8 @@ function Signup() {
         Signup</button>
         </div>
 
-      <div className="flex-col text-anchor-container description-text">
-        <p>
+      <div className="flex-col text-anchor-container ">
+        <p className="description-text">
           If you have an account {" "}
           </p>
           <a
