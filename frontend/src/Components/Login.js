@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import backendUrl from "../configBackend";
+// import workoutBackground from "../workoutBackground.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Login() {
   }
 
   return (
-    <div className="homepage-container">
+    <div className="homepage-container login-background">
       <h1 className="app-title">Workout Tracker</h1>
       <div className="flex-col input-button-container">
         <input
@@ -54,8 +55,8 @@ function Login() {
           Login
         </button>
       </div>
-      <div className="flex-col text-anchor-container description-text">
-        <p>If you do not have an account </p>
+      <div className="flex-col text-anchor-container ">
+        <p className="description-text">If you do not have an account </p>
         <a
           className="signup-login-anchor"
           onClick={() => {

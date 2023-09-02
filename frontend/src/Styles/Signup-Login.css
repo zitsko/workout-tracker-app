@@ -1,7 +1,16 @@
+.login-background{
+  background-image: url('../workoutBackground.png');
+  background-size: cover; 
+  background-position: center center;
+  margin-top: 2.5rem;
+}
+ 
  .app-title {
-    font-size: 1.5rem;
+    font-size: 2.1rem;
     margin-bottom: 1.5rem;
     text-align: center;
+    color: #08660fd2;
+
   }
 
   .input-button-container{
@@ -12,21 +21,16 @@
   .text-anchor-container{
     align-items: center;
     justify-content: center;
-    gap: 0.1rem;
+    gap: 0.05rem;
   }
 
   .signup-login-anchor{
-    text-decoration: underline;
-    color: var(--primary-color);
+    text-decoration: none;
+    color: rgb(21, 21, 192);
+    font-size: var(--fs-text);
   }
 
-  .signup-login-anchor:hover{
-   padding: 0.5625rem 0.9375rem;
-    border-radius: var(--br);
-    color: var(--white-color);
-    font-size: var(--fs-text);
+  .signup-login-anchor:hover{   
+    text-decoration: underline;
     cursor: pointer;
-    border: none;
-    background-color: var(--primary-color);
-    text-decoration: none;
   }

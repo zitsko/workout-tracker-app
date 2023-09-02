@@ -7,7 +7,6 @@ function ExerciseLibrary() {
   const [exercises, setExercises] = useState([]);
   const [muscle, setMuscle] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [, setExpandedExercise] = useState(null);
 
   //fetch exercises when muscle or search term change
   useEffect(() => {

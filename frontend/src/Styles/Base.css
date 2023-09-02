@@ -14,7 +14,7 @@ body {
 /* Layouts */
 .homepage-container,
 .library-container {
-  max-width: 37.5rem;
+  max-width: 40rem;
   margin: 0 auto;
   padding: 1.25rem;
   background-color: var(--white-color);
