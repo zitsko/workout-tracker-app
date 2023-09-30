@@ -6,7 +6,7 @@ router.post("/", workoutController.postWorkout);
 router.delete("/:id", workoutController.deleteWorkout);
 router.put("/:id", workoutController.updateWorkout);
 router.get("/:userId", workoutController.getAllUserWorkout);
-router.delete("/user/:userId", workoutController.deleteAllUserWorkouts);
+router.delete("/", workoutController.deleteAllUserWorkouts);
 
 
 module.exports = router;
